@@ -24,7 +24,8 @@
             text-align: center;
             background: linear-gradient(135deg, #d9f1ff 0%, #e6fff2 50%, #fef9d7 100%);
             display:flex;
-            align-items:stretch;
+            /* On small screens avoid vertical centering which can cause overflow; start at top */
+            align-items:flex-start;
             justify-content:center;
             padding:var(--page-padding) 20px;
             box-sizing:border-box;
@@ -39,6 +40,7 @@
             flex-direction:column;
             align-items:center;
             gap:18px;
+            margin: 0 auto;
         }
 
         h1 {
@@ -55,7 +57,7 @@
         .video-container {
             margin: 20px auto 0 auto;
             background-color: #ffffff; /* the 'white area' the user mentioned */
-            padding: 28px;
+            padding: clamp(12px, 3.5vw, 28px);
             border-radius: var(--card-radius);
             box-shadow: 0 10px 30px rgba(0,0,0,0.12);
             display: block;
@@ -63,6 +65,7 @@
             max-width:820px;
             box-sizing:border-box;
             position:relative;
+            overflow: hidden;
         }
 
         /* Show the emoji patterned background only on wide screens; on smaller screens emojis will not be visible */
@@ -85,6 +88,9 @@
             display:block;
             margin:0 auto;
             background: transparent;
+            /* Prevent the video from growing taller than the viewport on short screens */
+            max-height: calc(100vh - 180px);
+            object-fit: cover;
         }
 
         /* Small playful caption */
@@ -98,7 +104,7 @@
             :root{--page-padding:18px}
             h1{font-size:1.4rem}
             .video-container{padding:16px}
-            video{width:100%}
+            video{width:100%; max-height: calc(100vh - 140px)}
         }
 
         @media (max-width:480px){
@@ -109,14 +115,16 @@
 </head>
 <body>
 
-    <h1>😂 طرائف بين الفرونت إند والباك إند</h1>
+    <div class="page">
+        <h1>😂 طرائف بين الفرونت إند والباك إند</h1>
 
-    <div class="video-container">
-        <video controls>
-            <source src="funny.mp4" type="video/mp4">
-            متصفحك لا يدعم تشغيل الفيديو
-        </video>
-        <div class="caption">اضغط تشغيل وخليك مستعد تضحك 😂</div>
+        <div class="video-container">
+            <video controls>
+                <source src="funny.mp4" type="video/mp4">
+                متصفحك لا يدعم تشغيل الفيديو
+            </video>
+            <div class="caption">اضغط تشغيل وخليك مستعد تضحك 😂</div>
+        </div>
     </div>
 
 </body>
