@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>طرائف الفرونت إند والباك إند</title>
+    <style>
+        :root{
+            --accent-1: #000000; /* bright blue */
+            --accent-2: #000000; /* sunshine (kept for contrast) */
+            --accent-3: #12c657; /* vivid green */
+            --card-radius: 18px;
+            --page-padding: 40px;
+        }
+
+        html,body{
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+
+        body {
+            font-family: Arial, "Segoe UI", Tahoma, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #d9f1ff 0%, #e6fff2 50%, #fef9d7 100%);
+            display:flex;
+            align-items:stretch;
+            justify-content:center;
+            padding:var(--page-padding) 20px;
+            box-sizing:border-box;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+        }
+
+        .page {
+            width:100%;
+            max-width:980px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:18px;
+        }
+
+        h1 {
+            margin:0 0 18px 0;
+            font-size:2rem;
+            line-height:1.1;
+            background: linear-gradient(90deg,var(--accent-1),var(--accent-2),var(--accent-3));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+        }
+
+        .video-container {
+            margin: 20px auto 0 auto;
+            background-color: #ffffff; /* the 'white area' the user mentioned */
+            padding: 28px;
+            border-radius: var(--card-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            display: block;
+            width:100%;
+            max-width:820px;
+            box-sizing:border-box;
+            position:relative;
+        }
+
+        /* Show the emoji patterned background only on wide screens; on smaller screens emojis will not be visible */
+        @media (min-width:900px){
+            .video-container{
+                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='48'>%F0%9F%98%82</text></svg>");
+                background-repeat: repeat;
+                background-position: center;
+                background-size: 80px 80px;
+            }
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+            display:block;
+            margin:0 auto;
+            background: transparent;
+        }
+
+        /* Small playful caption */
+        .caption {
+            margin-top:12px;
+            color:#666;
+            font-size:0.95rem;
+        }
+
+        @media (max-width:900px){
+            :root{--page-padding:18px}
+            h1{font-size:1.4rem}
+            .video-container{padding:16px}
+            video{width:100%}
+        }
+
+        @media (max-width:480px){
+            h1{font-size:1.2rem}
+            .caption{font-size:0.9rem}
+        }
+    </style>
+</head>
+<body>
+
+    <h1>😂 طرائف بين الفرونت إند والباك إند</h1>
+
+    <div class="video-container">
+        <video controls>
+            <source src="funny.mp4" type="video/mp4">
+            متصفحك لا يدعم تشغيل الفيديو
+        </video>
+        <div class="caption">اضغط تشغيل وخليك مستعد تضحك 😂</div>
+    </div>
+
+</body>
+</html>
